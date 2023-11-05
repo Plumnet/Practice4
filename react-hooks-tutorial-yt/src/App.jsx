@@ -11,7 +11,7 @@ const  handleClick = () => {
 
 useEffect(() => {
   console.log("Hello Hooks");
-}, []);
+}, [count]);
 
   return (
     <div className="App">
