@@ -18,7 +18,8 @@ useEffect(() => {
 }, [count]);
 
 const handleRef = () => {
-  console.log(ref);
+  console.log(ref.current.value);
+  console.log(ref.current.offsetHeight);
 }
 
   return (
