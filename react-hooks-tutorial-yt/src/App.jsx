@@ -34,6 +34,17 @@ const handleRef = () => {
   console.log(ref.current.offsetHeight);
 }
 
+//useMemo
+const [count01, setCount01] = useState(0);
+const [count02, setCount02] = useState(0);
+
+const square= () => {
+  let i = 0;
+  while(i < 200000000) {
+    i++;
+  }
+  return count02 * count02;
+};
   return (
     <div className="App">
       <h1>useState, useEffect</h1>
@@ -55,6 +66,14 @@ const handleRef = () => {
       <p>カウント:{state}</p>
       <button onClick={() => dispatch({ type: "increment" })}>+</button>
       <button onClick={() => dispatch({ type: "increment" })}>-</button>
+
+      <hr />
+      <h1>useMemo</h1>
+      <div>カウント1:{count01}</div>
+      <div>カウント2:{count02}</div>
+      <div>結果:{square()}</div>
+      <button onClick={() => setCount01(count01 + 1)}>+</button>
+      <button onClick={() => setCount02(count02 + 1)}>+</button>
     </div>
     );
 }
