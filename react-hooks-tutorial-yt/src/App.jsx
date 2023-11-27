@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext , useRef, useReducer} from "react";
+import { useEffect, useState, useContext , useRef, useReducer, useMemo, SomeChild, useCallback} from "react";
 import "./App.css";
 import ShinCodeContext from "./main";
 
@@ -38,13 +38,34 @@ const handleRef = () => {
 const [count01, setCount01] = useState(0);
 const [count02, setCount02] = useState(0);
 
-const square= () => {
+// const square= () => {
+//   let i = 0;
+//   while(i < 200000000) {
+//     i++;
+//   }
+//   return count02 * count02;
+// };
+
+const square= useMemo(() => {
   let i = 0;
-  while(i < 200000000) {
+  while(i < 2000000000) {
     i++;
   }
+  console.log("クリックされました");
   return count02 * count02;
-};
+}, [count02]);
+
+//useCallback　関数のメモ化
+const [counter, setCounter] = useState(0);
+
+// const showCount = () => {
+//   alert(`これは重い処理です。`);
+// };
+
+const showCount = useCallback(() => {
+  alert(`これは重い処理です。`);
+}, [counter]);
+
   return (
     <div className="App">
       <h1>useState, useEffect</h1>
@@ -71,9 +92,13 @@ const square= () => {
       <h1>useMemo</h1>
       <div>カウント1:{count01}</div>
       <div>カウント2:{count02}</div>
-      <div>結果:{square()}</div>
+      <div>結果:{square}</div>
       <button onClick={() => setCount01(count01 + 1)}>+</button>
       <button onClick={() => setCount02(count02 + 1)}>+</button>
+
+      <hr />
+      <h1>useCallBack</h1>
+      <SomeChild showCount={showCount} />
     </div>
     );
 }
