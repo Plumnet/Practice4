@@ -1,9 +1,9 @@
 import React from 'react'
 
-const someChild = () => {
+const SomeChild = () => {
   return (
-    <div>someChild</div>
+    <div>SomeChild</div>
   )
 }
 
-export default someChild
+export default SomeChild
