@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
-const SomeChild = () => {
-  return (
-    <div>SomeChild</div>
-  )
-}
+const SomeChild = ({ showCount }) => {
+  const [counter, setCounter] = useState(0);
 
-export default SomeChild
+  useEffect(() => {
+    console.log("counterを更新しました。");
+    setCounter(showCount);
+  }, [showCount]);
+  return <div>SomeChild</div>;
+};
+
+export default SomeChild;

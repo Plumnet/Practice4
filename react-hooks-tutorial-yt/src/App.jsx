@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext , useRef, useReducer} from "react";
 import "./App.css";
+import SomeChild from "./SomeChild";
 import ShinCodeContext from "./main";
 const reducer = (state, action) => {
   switch(action.type) {
@@ -40,16 +41,17 @@ const square= () => {
   return count02 * count02;
 };
 
-//useCallback　関数のメモ化
-const [counter, setCounter] = useState(0);
+  //useCallback
+  //関数のメモ化
+  const [counter, setCounter] = useState(0);
 
-// const showCount = () => {
-//   alert(`これは重い処理です。`);
-// };
+  // const showCount = () => {
+  //   alert(`これは重い処理です。`);
+  // };
 
-const showCount = useCallback(() => {
-  alert(`これは重い処理です。`);
-}, [counter]);
+  // const showCount = useCallback(() => {
+  //   alert(`Count ${counter}`);
+  // }, [counter]);
 
   return (
     <div className="App">
@@ -79,8 +81,9 @@ const showCount = useCallback(() => {
       <button onClick={() => setCount02(count02 + 1)}>+</button>
 
       <hr />
-      <h1>useCallBack</h1>
-      <SomeChild showCount={showCount} />
+      <h1>UseCallBack</h1>
+      {/* <SomeChild showCount={showCount} />
+      <button onClick={() => setCounter(counter + 1)}>＋</button> */}
     </div>
     );
 }
